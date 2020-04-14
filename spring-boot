@@ -1,0 +1,18 @@
+零配置
+
+    - Tomcat/Jetty遵循了Servlet规范，所以可以成为Java Web容器。
+    -
+内嵌容器的原理
+启动流程的分析
+
+    -SpringBootConfiguration：SpringBoot的配置类
+        -Configuration：Spring定义的注解
+
+    -EnableAutoConfiguration：开始自动配置功能。将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面
+的所有组件扫描到Spring容器。（由AutoConfigurationPackage->@Import({Registrar.class})->new Registrar().registerBeanDefinitions）
+        -AutoConfigurationPackage：自动配置包，即
+            -@Import({Registrar.class})：Spring底层注解，给容器中导入组件，导入的组件由Registrar.class决定
+        -@Import({AutoConfigurationImportSelector.class})：会给容器中导入非常多的自动配置类（xxxAutoConfiguration）
+        SpringBoot在启动的时候会在类路径下（spring-boot-autoconfigure-2.2.1.RELEASE.jar）的META-INF/spring.factories中获取
+        EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类生效，帮助我们完成工作
+    -ComponentScan

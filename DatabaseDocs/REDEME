@@ -1,0 +1,5 @@
+-根据数据库信息生成数据库word文档
+-测试代码位于测试包中，点开测试包即可进行测试
+-相关代码配置：
+    -application.properties
+    -src\test\java\com\generate\demo\DatabaseDocApplicationTests.java
